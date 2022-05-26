@@ -1,13 +1,13 @@
 import React from 'react'
 import './CreateButton.css'
 
-export function CreateButton({ setModalIsOpen }) {
+export function CreateButton({ setModalIsOpen, modalIsOpen }) {
   const onClickButton = () => {
-    setModalIsOpen(true)
+    setModalIsOpen(!modalIsOpen)
   }
 
   return (
-    <button className="create-button" type="button" onClick={onClickButton}>
+    <button className={(modalIsOpen && "close-button") || 'create-button'} type="button" onClick={onClickButton}>
       +
     </button>
   )

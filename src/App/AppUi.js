@@ -41,11 +41,14 @@ export function AppUi() {
 
       {modalIsOpen && (
         <Modal>
-          <p>dsfafsdf</p>
+          <p>Crea un TODO</p>
         </Modal>
       )}
 
-      <CreateButton setModalIsOpen={setModalIsOpen} />
+      <CreateButton 
+        setModalIsOpen={setModalIsOpen} 
+        modalIsOpen={modalIsOpen}
+      />
     </>
   )
 }
