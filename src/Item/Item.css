@@ -79,11 +79,8 @@
 
 .icon-delete {
   cursor: pointer;
-  display: flex;
-  align-items: center;
   height: 25px;
   width: 25px;
-  right: 8px
 }
 
 .icon-delete:hover {

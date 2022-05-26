@@ -6,19 +6,27 @@ import { BsFillTrashFill } from 'react-icons/bs';
 
 export function Item(props) {
   return (
-    <li className={props.completed ? 'item--completed' : 'item'}>
-      { props.completed ?
-        <AiFillCheckCircle className="icon icon-check--fill" /> :
-        <AiOutlineCheckCircle className="icon icon-check--outline" />
-      }
+    <li className={props.completed ? "item--completed" : "item"}>
+      {props.completed ? (
+        <AiFillCheckCircle
+          onClick={props.onChangeStatus}
+          className="icon icon-check--fill"
+        />
+      ) : (
+        <AiOutlineCheckCircle
+          onClick={props.onChangeStatus}
+          className="icon icon-check--outline"
+        />
+      )}
 
-      <p className={`item-p ${props.completed && 'item-p--completed'}`}>
+      <p className={`item-p ${props.completed && "item-p--completed"}`}>
         {props.text}
       </p>
 
-      <span>
-        <BsFillTrashFill className="icon-delete" />
-      </span>
+      <BsFillTrashFill
+        onClick={props.onDelete}
+        className="icon-delete"
+      />
     </li>
   )
 }

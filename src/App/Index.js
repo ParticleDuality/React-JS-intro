@@ -5,22 +5,62 @@ import { List } from "../List/Index"
 import { Item } from "../Item/Index"
 import { CreateButton } from "../CreateButton/Index"
 
-const TODOS = [
+const DEFAULT_TODOS = [
   { text: "Estudiar", completed: true },
   { text: "Trabajar", completed: false },
   { text: "Leer", completed: false },
 ]
 
 function App() {
+  const [todos, setTodos] = React.useState(DEFAULT_TODOS)
+  const [searchValue, setSearchValue] = React.useState('')
+
+  const completedTodos = todos.filter(todo => todo.completed).length
+  const totalTodos = todos.length
+
+  let searchedTodos = todos
+
+  if (searchValue.length > 0) {
+    searchedTodos = todos.filter(todo => {
+      const todoText = todo.text.toLowerCase()
+      const searchText = searchValue.toLowerCase()
+
+      return todoText.includes(searchText)
+    })
+  }
+
+  const changeTodoStatus = (name) => {
+    const todoIndex = todos.findIndex((todo) => todo.text === name)
+    const newTodos = [...todos]
+    
+    newTodos[todoIndex].completed === true
+      ? newTodos[todoIndex].completed = false
+      : newTodos[todoIndex].completed = true 
+    setTodos(newTodos)
+  }
+
+  const deleteTodo = (name) => {
+    const todoIndex = todos.findIndex((todo) => todo.text === name)
+    const newTodos = [...todos]
+
+    newTodos.splice(todoIndex, 1)
+    setTodos(newTodos)
+  }
+
   return (
     <>
-      <Header />
+      <Header total={totalTodos} completed={completedTodos} />
 
-      <SearchBox />
+      <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
 
       <List>
-        { TODOS.map(todo => (
-            <Item key={ todo.text } text={ todo.text } completed={ todo.completed } />
+        {searchedTodos.map((todo, index) => (
+          <Item
+            key={index}
+            {...todo}
+            onChangeStatus={() => changeTodoStatus(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
         ))}
       </List>
 
