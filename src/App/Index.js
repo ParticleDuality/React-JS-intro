@@ -1,17 +1,13 @@
 import React from "react"
-import { Header } from "../Header"
-import { SearchBox } from "../SearchBox"
-import { List } from "../List"
-import { Item } from "../Item"
-import { CreateButton } from "../CreateButton"
+import { AppUi } from "./AppUi"
 
-const DEFAULT_TODOS = [
-  { text: "Estudiar", completed: true },
-  { text: "Trabajar", completed: false },
-  { text: "Leer", completed: false },
-]
+export function App() {
+  const DEFAULT_TODOS = [
+    { text: "Estudiar", completed: true },
+    { text: "Trabajar", completed: false },
+    { text: "Leer", completed: false },
+  ]
 
-function App() {
   const [todos, setTodos] = React.useState(DEFAULT_TODOS)
   const [searchValue, setSearchValue] = React.useState('')
 
@@ -48,24 +44,15 @@ function App() {
   }
 
   return (
-    <>
-      <Header total={totalTodos} completed={completedTodos} />
-
-      <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
-
-      <List>
-        {searchedTodos.map((todo, index) => (
-          <Item
-            key={index}
-            {...todo}
-            onChangeStatus={() => changeTodoStatus(todo.text)}
-            onDelete={() => deleteTodo(todo.text)}
-          />
-        ))}
-      </List>
-
-      <CreateButton />
-    </>
+    <AppUi
+      totalTodos={totalTodos}
+      completedTodos={completedTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      changeTodoStatus={changeTodoStatus}
+      deleteTodo={deleteTodo}
+    />
   )
 }
 
