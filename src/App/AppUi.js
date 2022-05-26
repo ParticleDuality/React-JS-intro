@@ -7,30 +7,29 @@ import { Item } from "../Item"
 import { CreateButton } from "../CreateButton"
 
 export function AppUi() {
+  const { error, loading, changeTodoStatus, deleteTodo, searchedTodos } =
+    React.useContext(Context)
+
   return (
     <>
       <Header />
 
       <SearchBox />
 
-      <Context.Consumer>
-        {({ error, loading, changeTodoStatus, deleteTodo, searchedTodos }) => (
-          <List>
-            {error && <p>Ha ocurrido un error</p>}
-            {loading && <p>Cargando...</p>}
-            {!loading && !searchedTodos.length && <p>Crea tu primer TODO</p>}
+      <List>
+        {error && <p>Ha ocurrido un error</p>}
+        {loading && <p>Cargando...</p>}
+        {!loading && !searchedTodos.length && <p>Crea tu primer TODO</p>}
 
-            {searchedTodos.map((todo, index) => (
-              <Item
-                key={index}
-                {...todo}
-                onChangeStatus={() => changeTodoStatus(todo.text)}
-                onDelete={() => deleteTodo(todo.text)}
-              />
-            ))}
-          </List>
-        )}
-      </Context.Consumer>
+        {searchedTodos.map((todo, index) => (
+          <Item
+            key={index}
+            {...todo}
+            onChangeStatus={() => changeTodoStatus(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </List>
 
       <CreateButton />
     </>
