@@ -1,5 +1,6 @@
 .modal {
   background: rgba(32, 35, 41, .8);
+  z-index: 1;
   position: fixed;
   top: -10px;
   left: -10px;
@@ -15,6 +16,7 @@
 }
 
 .modal-card {
+  z-index: 2;
   color: #d1f7ff;
   width: 40vh;
   max-width: 70%;
