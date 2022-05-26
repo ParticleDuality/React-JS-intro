@@ -1,9 +1,9 @@
 import React from "react"
-import { Header } from "../Header/Index"
-import { SearchBox } from "../SearchBox/Index"
-import { List } from "../List/Index"
-import { Item } from "../Item/Index"
-import { CreateButton } from "../CreateButton/Index"
+import { Header } from "../Header"
+import { SearchBox } from "../SearchBox"
+import { List } from "../List"
+import { Item } from "../Item"
+import { CreateButton } from "../CreateButton"
 
 const DEFAULT_TODOS = [
   { text: "Estudiar", completed: true },
