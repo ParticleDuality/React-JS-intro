@@ -5,10 +5,18 @@ import { SearchBox } from "../SearchBox"
 import { List } from "../List"
 import { Item } from "../Item"
 import { CreateButton } from "../CreateButton"
+import { Modal } from '../Modal'
 
 export function AppUi() {
-  const { error, loading, changeTodoStatus, deleteTodo, searchedTodos } =
-    React.useContext(Context)
+  const { 
+    error,
+    loading,
+    changeTodoStatus,
+    deleteTodo,
+    searchedTodos,
+    modalIsOpen,
+    setModalIsOpen
+  } = React.useContext(Context)
 
   return (
     <>
@@ -31,7 +39,13 @@ export function AppUi() {
         ))}
       </List>
 
-      <CreateButton />
+      {modalIsOpen && (
+        <Modal>
+          <p>dsfafsdf</p>
+        </Modal>
+      )}
+
+      <CreateButton setModalIsOpen={setModalIsOpen} />
     </>
   )
 }

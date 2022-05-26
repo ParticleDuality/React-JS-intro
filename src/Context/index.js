@@ -12,6 +12,7 @@ export function Provider(props) {
   } = useLocalStorage("TODOS_V1", [])
 
   const [searchValue, setSearchValue] = React.useState("")
+  const [modalIsOpen, setModalIsOpen] = React.useState(false)
 
   const completedTodos = todos.filter((todo) => todo.completed).length
   const totalTodos = todos.length
@@ -55,7 +56,9 @@ export function Provider(props) {
       setSearchValue,
       searchedTodos,
       changeTodoStatus,
-      deleteTodo
+      deleteTodo,
+      modalIsOpen,
+      setModalIsOpen
     }}>
       { props.children }
     </Context.Provider>
