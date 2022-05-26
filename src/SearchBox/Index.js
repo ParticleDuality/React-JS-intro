@@ -10,7 +10,7 @@ export function SearchBox({ searchValue, setSearchValue }) {
   return (
     <input
       className="search-box"
-      placeholder="Busca un TODO..."
+      placeholder="Buscar TODOs..."
       value={searchValue}
       onChange={onSearchChange}
     />

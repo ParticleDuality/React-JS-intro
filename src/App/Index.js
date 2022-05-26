@@ -1,14 +1,15 @@
 import React from "react"
 import { AppUi } from "./AppUi"
+import { useLocalStorage } from "../Hooks/useLocalStorage"
 
+// const DEFAULT_TODOS = [
+//   { text: "Estudiar", completed: true },
+//   { text: "Trabajar", completed: false },
+//   { text: "Leer", completed: false },
+// ]
 export function App() {
-  const DEFAULT_TODOS = [
-    { text: "Estudiar", completed: true },
-    { text: "Trabajar", completed: false },
-    { text: "Leer", completed: false },
-  ]
+  const [todos, saveTodos] = useLocalStorage("TODOS_V1", [])
 
-  const [todos, setTodos] = React.useState(DEFAULT_TODOS)
   const [searchValue, setSearchValue] = React.useState('')
 
   const completedTodos = todos.filter(todo => todo.completed).length
@@ -32,7 +33,7 @@ export function App() {
     newTodos[todoIndex].completed === true
       ? newTodos[todoIndex].completed = false
       : newTodos[todoIndex].completed = true 
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   const deleteTodo = (name) => {
@@ -40,7 +41,7 @@ export function App() {
     const newTodos = [...todos]
 
     newTodos.splice(todoIndex, 1)
-    setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   return (
