@@ -1,0 +1,88 @@
+.item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #bc13fe;
+  border-radius: 6px;
+  margin: 24px 24px
+}
+
+.item--completed {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #05d9e8;border-radius: 6px;
+  margin-top: 24px;
+  margin: 24px 24px
+}
+
+.item:hover {
+  box-shadow: 0 0 .1rem #fff,
+      0 0 .1rem #fff,
+      0 0 1rem #bc13fe,
+      0 0 0.4rem #bc13fe,
+      0 0 1.4rem #bc13fe,
+      inset 0 0 .7rem #bc13fe;
+}
+
+.item--completed:hover {
+  box-shadow: 0 0 .1rem #fff,
+      0 0 .1rem #fff,
+      0 0 1rem #05d9e8,
+      0 0 0.4rem #05d9e8,
+      0 0 1.4rem #05d9e8,
+      inset 0 0 .7rem #05d9e8;
+}
+
+.item-p {
+  margin: 24px 0 24px 24px;
+  width: calc(100% - 130px);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400
+}
+
+.item-p--completed {
+  text-decoration: line-through
+}
+
+.icon {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 16px;
+}
+
+.icon-check {
+  position: absolute;
+  left: 22px;
+  color: #05d9e8
+}
+
+.icon-check--fill {
+  color: #05d9e8
+}
+
+.icon-check--fill:hover {
+  color: white
+}
+
+.icon-check--outline:hover {
+  color: #bc13fe
+}
+
+.icon-delete {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
+.icon-delete:hover {
+  color: #ff2a6d
+}
