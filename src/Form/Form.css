@@ -68,9 +68,9 @@ textarea:focus {
 }
 
 .button-add {
-  color: #030303;
-  background-color: #d1f7ff;
-  border: 2px solid #05d9e8;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #05d9e8;
 }
 
 .button-add:hover {
@@ -84,7 +84,8 @@ textarea:focus {
 
 .button-cancel {
   background: transparent;
-  color: #ffffff;
+  border:1px solid #ff2a6d;
+  color:#ffffff;
 }
 
 .button-cancel:hover {

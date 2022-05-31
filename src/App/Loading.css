@@ -1,0 +1,45 @@
+.loading-container {
+  padding: 0;
+  width: -webkit-fill-available;
+  font-size: 18px;
+  text-align: left;
+  color: #ffffff;
+  /* border: 1px solid #bc13fe; */
+  /* border-radius: 6px; */
+  list-style-type: none;
+  border-top: 1px solid #bc13fe;
+}
+
+.loading-skeleton {
+  position: relative;
+  border: 1px solid #bc13fe;
+  border-radius: 6px;
+  margin: 24px 24px;
+  height: 8vh;
+  background: linear-gradient(90deg, #bc13fe, #05d9e8,#bc13fe, #05d9e8);
+  background-size: 400% 400%;
+  animation: loading-skeleton 3s alternate infinite;
+  background-repeat: repeat;
+}
+
+@keyframes loading-skeleton {
+  0% {
+    background-position: 0%;
+  }
+
+  25% {
+    background-position: 50%
+  } 
+
+  50% {
+    background-position: 100%
+  }
+
+  75% {
+    background-position: 50%
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}

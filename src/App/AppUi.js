@@ -7,6 +7,9 @@ import { Item } from "../Item"
 import { CreateButton } from "../CreateButton"
 import { Modal } from '../Modal'
 import { Form } from '../Form'
+import { Error } from './Error'
+import { Loading } from './Loading'
+import { NotFound } from './NotFound'
 
 export function AppUi() {
   const { 
@@ -26,9 +29,13 @@ export function AppUi() {
       <SearchBox />
 
       <List>
-        {error && <p>Ha ocurrido un error</p>}
-        {loading && <p>Cargando...</p>}
-        {!loading && !searchedTodos.length && <p>Crea tu primer TODO</p>}
+        {
+          error && <Error error={error} />
+        }
+        {
+          loading && <Loading />
+        }
+        {!loading && !searchedTodos.length && <NotFound />}
 
         {searchedTodos.map((todo, index) => (
           <Item

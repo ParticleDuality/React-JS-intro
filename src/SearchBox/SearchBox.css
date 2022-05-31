@@ -18,8 +18,7 @@
 }
 
 .search-box:focus {
-  box-shadow: 0 0 .1rem #fff,
-      0 0 .1rem #fff,
+  box-shadow: 
       0 0 1rem #bc13fe,
       0 0 0.4rem #bc13fe,
       0 0 1.4rem #bc13fe,

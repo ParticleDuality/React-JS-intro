@@ -6,7 +6,7 @@ export function Header() {
   const { totalTodos, completedTodos } = React.useContext(Context)
 
   return (
-    <div className="container">
+    <div className="header-container">
       <h1 className="title">TODO MACHINE 🕑</h1>
       <h2 className="todo-counter">
         Has <b>completado {completedTodos}</b> de{" "}
