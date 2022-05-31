@@ -38,6 +38,16 @@ export function Provider(props) {
     saveTodos(newTodos)
   }
 
+  const addTodo = (text) => {
+    const newTodos = [...todos]
+
+    newTodos.push({
+      completed: false,
+      text: text,
+    })
+    saveTodos(newTodos)
+  }
+
   const deleteTodo = (name) => {
     const todoIndex = todos.findIndex((todo) => todo.text === name)
     const newTodos = [...todos]
@@ -55,6 +65,7 @@ export function Provider(props) {
       searchValue,
       setSearchValue,
       searchedTodos,
+      addTodo,
       changeTodoStatus,
       deleteTodo,
       modalIsOpen,

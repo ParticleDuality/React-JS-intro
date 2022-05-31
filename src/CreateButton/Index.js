@@ -4,6 +4,7 @@ import './CreateButton.css'
 export function CreateButton({ setModalIsOpen, modalIsOpen }) {
   const onClickButton = () => {
     setModalIsOpen(!modalIsOpen)
+    // setModalIsOpen(prevState => !prevState)
   }
 
   return (

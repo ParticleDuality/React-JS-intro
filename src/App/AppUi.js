@@ -6,6 +6,7 @@ import { List } from "../List"
 import { Item } from "../Item"
 import { CreateButton } from "../CreateButton"
 import { Modal } from '../Modal'
+import { Form } from '../Form'
 
 export function AppUi() {
   const { 
@@ -41,7 +42,7 @@ export function AppUi() {
 
       {modalIsOpen && (
         <Modal>
-          <p>Crea un TODO</p>
+          <Form />
         </Modal>
       )}
 

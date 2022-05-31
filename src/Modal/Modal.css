@@ -23,7 +23,8 @@
   height: 35vh;
   background: #010121;
   border: 1px solid #bc13fe;
-  border-radius: 8px;display: flex;
+  border-radius: 8px;
+  display: flex;
   justify-content: center;
   /* align-items: center; */
   box-shadow: 0 0 .1rem #fff,
