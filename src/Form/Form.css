@@ -26,8 +26,9 @@ textarea {
   color: #1E1E1F;
   font-size: 20px;
   padding: 12px;
-  height: 36px;
+  max-height: 46px;
   max-width: 90%;
+  resize: none;
 }
 
 textarea::placeholder {
