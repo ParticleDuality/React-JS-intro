@@ -9,7 +9,7 @@ import { Modal } from "../Modal"
 import { Form } from "../Form"
 import { Error } from "./Error"
 import { Loading } from "./Loading"
-import { NotFound } from "./NotFound"
+import { Empty } from "./Empty"
 import { Counter } from "../Counter"
 
 function App() {
@@ -37,13 +37,29 @@ function App() {
       </Header>
 
       <List
+        totalTodos={totalTodos}
+        searchText={searchValue}
         error={error}
         loading={loading}
         searchedTodos={searchedTodos}
         onError={() => <Error />}
         onLoading={() => <Loading />}
-        onEmpty={() => <NotFound />}
-        render={(todo, index) => (
+        onEmpty={() => <Empty />}
+        onEmptySearch={(searchText) => (
+          <p className="empty-label">
+            No se encontró un TODO para {searchText}
+          </p>
+        )}
+        // render={(todo, index) => (
+        //   <Item
+        //     key={index}
+        //     {...todo}
+        //     onChangeStatus={() => changeTodoStatus(todo.text)}
+        //     onDelete={() => deleteTodo(todo.text)}
+        //   />
+        // )}
+      >
+        {(todo, index) => (
           <Item
             key={index}
             {...todo}
@@ -51,7 +67,7 @@ function App() {
             onDelete={() => deleteTodo(todo.text)}
           />
         )}
-      />
+      </List>
 
       {/* <List>
         {error && <Error error={error} />}

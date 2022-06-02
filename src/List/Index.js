@@ -3,14 +3,18 @@ import './List.css'
 
 export function List(props) {
   return (
-    <div className='list'>
-      <ul>{props.children}</ul>
-
+    <div className="list">
       {props.error && props.onError()}
       {props.loading && props.onLoading()}
-      {!props.loading && !props.searchedTodos.length && props.onEmpty()}
+      {!props.loading && !props.totalTodos && props.onEmpty()}
 
-      {props.searchedTodos.map((todo, index) => props.render(todo, index))}
+      {!!props.totalTodos &&
+        !props.searchedTodos.length &&
+        props.onEmptySearch(props.searchText)}
+
+        {props.searchedTodos.map(
+          props.children || props.render
+        )}
     </div>
   )
 }

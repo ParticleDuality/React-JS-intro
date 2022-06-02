@@ -3,7 +3,6 @@ import './SearchBox.css'
 
 export function SearchBox({ searchValue, setSearchValue }) {
   const onSearchChange = (event) => {
-    console.log(event.target.value)
     setSearchValue(event.target.value)
   }
 
