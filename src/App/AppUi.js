@@ -10,31 +10,41 @@ import { Form } from '../Form'
 import { Error } from './Error'
 import { Loading } from './Loading'
 import { NotFound } from './NotFound'
+import { Counter } from '../Counter'
 
 export function AppUi() {
-  const { 
+  const {
     error,
     loading,
     changeTodoStatus,
     deleteTodo,
     searchedTodos,
     modalIsOpen,
-    setModalIsOpen
+    setModalIsOpen,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    setSearchValue,
   } = React.useContext(Context)
 
   return (
     <>
-      <Header />
+      <Header>
+        <Counter
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+        />
+        
+        <SearchBox 
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+      </Header>
 
-      <SearchBox />
 
       <List>
-        {
-          error && <Error error={error} />
-        }
-        {
-          loading && <Loading />
-        }
+        {error && <Error error={error} />}
+        {loading && <Loading />}
         {!loading && !searchedTodos.length && <NotFound />}
 
         {searchedTodos.map((todo, index) => (
@@ -53,10 +63,7 @@ export function AppUi() {
         </Modal>
       )}
 
-      <CreateButton 
-        setModalIsOpen={setModalIsOpen} 
-        modalIsOpen={modalIsOpen}
-      />
+      <CreateButton setModalIsOpen={setModalIsOpen} modalIsOpen={modalIsOpen} />
     </>
   )
 }
