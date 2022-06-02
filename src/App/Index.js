@@ -31,18 +31,29 @@ function App() {
   return (
     <>
       <Header>
-        <Counter 
-          totalTodos={totalTodos}
-          completedTodos={completedTodos}
-        />
+        <Counter totalTodos={totalTodos} completedTodos={completedTodos} />
 
-        <SearchBox
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-        />
+        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </Header>
 
-      <List>
+      <List
+        error={error}
+        loading={loading}
+        searchedTodos={searchedTodos}
+        onError={() => <Error />}
+        onLoading={() => <Loading />}
+        onEmpty={() => <NotFound />}
+        render={(todo, index) => (
+          <Item
+            key={index}
+            {...todo}
+            onChangeStatus={() => changeTodoStatus(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        )}
+      />
+
+      {/* <List>
         {error && <Error error={error} />}
         {loading && <Loading />}
         {!loading && !searchedTodos.length && <NotFound />}
@@ -55,21 +66,15 @@ function App() {
             onDelete={() => deleteTodo(todo.text)}
           />
         ))}
-      </List>
+      </List> */}
 
       {modalIsOpen && (
         <Modal>
-          <Form 
-            addTodo={addTodo}
-            setModalIsOpen={setModalIsOpen}
-          />
+          <Form addTodo={addTodo} setModalIsOpen={setModalIsOpen} />
         </Modal>
       )}
 
-      <CreateButton 
-        setModalIsOpen={setModalIsOpen}
-        modalIsOpen={modalIsOpen}
-      />
+      <CreateButton setModalIsOpen={setModalIsOpen} modalIsOpen={modalIsOpen} />
     </>
   )
 }
