@@ -1,9 +1,7 @@
 import React from 'react'
-import { useLocalStorage } from '../Hooks/useLocalStorage'
+import { useLocalStorage } from './useLocalStorage'
 
-export const Context = React.createContext()
-
-export function Provider(props) {
+export function useTodos() {
   const {
     item: todos,
     saveItem: saveTodos,
@@ -57,7 +55,7 @@ export function Provider(props) {
   }
 
   return (
-    <Context.Provider value={{
+    {
       loading,
       error,
       totalTodos,
@@ -70,8 +68,6 @@ export function Provider(props) {
       deleteTodo,
       modalIsOpen,
       setModalIsOpen
-    }}>
-      { props.children }
-    </Context.Provider>
+    }
   )
 }

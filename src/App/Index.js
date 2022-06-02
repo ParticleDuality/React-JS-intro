@@ -1,17 +1,76 @@
 import React from "react"
-import { AppUi } from "./AppUi"
-import { Provider } from "../Context"
+import { useTodos } from "./useTodos"
+import { Header } from "../Header"
+import { SearchBox } from "../SearchBox"
+import { List } from "../List"
+import { Item } from "../Item"
+import { CreateButton } from "../CreateButton"
+import { Modal } from "../Modal"
+import { Form } from "../Form"
+import { Error } from "./Error"
+import { Loading } from "./Loading"
+import { NotFound } from "./NotFound"
+import { Counter } from "../Counter"
 
-// const DEFAULT_TODOS = [
-//   { text: "Estudiar", completed: true },
-//   { text: "Trabajar", completed: false },
-//   { text: "Leer", completed: false },
-// ]
-export function App() {
+function App() {
+  const {
+    error,
+    loading,
+    changeTodoStatus,
+    deleteTodo,
+    searchedTodos,
+    modalIsOpen,
+    setModalIsOpen,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    setSearchValue,
+    addTodo,
+  } = useTodos()
+
   return (
-    <Provider>
-      <AppUi />
-    </Provider>
+    <>
+      <Header>
+        <Counter 
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+        />
+
+        <SearchBox
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+        />
+      </Header>
+
+      <List>
+        {error && <Error error={error} />}
+        {loading && <Loading />}
+        {!loading && !searchedTodos.length && <NotFound />}
+
+        {searchedTodos.map((todo, index) => (
+          <Item
+            key={index}
+            {...todo}
+            onChangeStatus={() => changeTodoStatus(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
+          />
+        ))}
+      </List>
+
+      {modalIsOpen && (
+        <Modal>
+          <Form 
+            addTodo={addTodo}
+            setModalIsOpen={setModalIsOpen}
+          />
+        </Modal>
+      )}
+
+      <CreateButton 
+        setModalIsOpen={setModalIsOpen}
+        modalIsOpen={modalIsOpen}
+      />
+    </>
   )
 }
 
