@@ -1,7 +1,7 @@
 import React from 'react'
 import './SearchBox.css'
 
-export function SearchBox({ searchValue, setSearchValue }) {
+export function SearchBox({ searchValue, setSearchValue, loading }) {
   const onSearchChange = (event) => {
     setSearchValue(event.target.value)
   }
@@ -12,6 +12,7 @@ export function SearchBox({ searchValue, setSearchValue }) {
       placeholder="Buscar TODOs..."
       value={searchValue}
       onChange={onSearchChange}
+      disabled={loading}
     />
   )
 }

@@ -18,6 +18,10 @@
     0 0 6px #d1f7ff;
 }
 
+.todo-counter--loading {
+  opacity: 25%;
+}
+
 .title {
   font-size: 40px;
   font-family: 'Zen Maru Gothic';

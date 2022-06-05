@@ -24,3 +24,7 @@
       0 0 1.4rem #bc13fe,
       inset 0 0 .7rem #bc13fe;
 }
+
+.search-box:disabled {
+  opacity: 25%
+}

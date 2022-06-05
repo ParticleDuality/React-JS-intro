@@ -30,10 +30,18 @@ function App() {
 
   return (
     <>
-      <Header>
-        <Counter totalTodos={totalTodos} completedTodos={completedTodos} />
+      <Header loading={loading}>
+        <Counter
+          totalTodos={totalTodos}
+          completedTodos={completedTodos}
+          // loading={loading}
+        />
 
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+        <SearchBox
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          // loading={loading}
+        />
       </Header>
 
       <List
