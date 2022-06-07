@@ -11,6 +11,7 @@ import { Error } from "./Error"
 import { Loading } from "./Loading"
 import { Empty } from "./Empty"
 import { Counter } from "../Counter"
+import { ChangeAlertWithStorageListener } from "../ChangeAlert"
 
 function App() {
   const {
@@ -26,6 +27,7 @@ function App() {
     searchValue,
     setSearchValue,
     addTodo,
+    sincronizeTodos,
   } = useTodos()
 
   return (
@@ -99,6 +101,8 @@ function App() {
       )}
 
       <CreateButton setModalIsOpen={setModalIsOpen} modalIsOpen={modalIsOpen} />
+
+      <ChangeAlertWithStorageListener sincronize={sincronizeTodos} />
     </>
   )
 }

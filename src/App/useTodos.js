@@ -5,6 +5,7 @@ export function useTodos() {
   const {
     item: todos,
     saveItem: saveTodos,
+    sincronizeItem: sincronizeTodos,
     loading,
     error,
   } = useLocalStorage("TODOS_V1", [])
@@ -54,20 +55,19 @@ export function useTodos() {
     saveTodos(newTodos)
   }
 
-  return (
-    {
-      loading,
-      error,
-      totalTodos,
-      completedTodos,
-      searchValue,
-      setSearchValue,
-      searchedTodos,
-      addTodo,
-      changeTodoStatus,
-      deleteTodo,
-      modalIsOpen,
-      setModalIsOpen
-    }
-  )
+  return {
+    loading,
+    error,
+    totalTodos,
+    completedTodos,
+    searchValue,
+    setSearchValue,
+    searchedTodos,
+    addTodo,
+    changeTodoStatus,
+    deleteTodo,
+    modalIsOpen,
+    setModalIsOpen,
+    sincronizeTodos,
+  }
 }

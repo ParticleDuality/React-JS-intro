@@ -12,9 +12,8 @@ export function List(props) {
         !props.searchedTodos.length &&
         props.onEmptySearch(props.searchText)}
 
-        {props.searchedTodos.map(
-          props.children || props.render
-        )}
+      {(!props.loading && !props.error) &&
+        props.searchedTodos.map(props.children || props.render)}
     </div>
   )
 }
